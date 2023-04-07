@@ -1,0 +1,6 @@
+# 教育相关网站，不需要代理
+
+# 电专
+DOMAIN-SUFFIX,edu.cn
+IP-CIDR,2.2.2.0/24,no-resolve
+DOMAIN-SUFFIX,msftconnecttest.com
