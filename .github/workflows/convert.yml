@@ -22,7 +22,7 @@ jobs:
         for file in $(find . -type f -name '*.list'); do
           echo "Generate $file.yaml file"
           echo "payload:" > "$file".yaml
-          cat "$file" | grep -E "^(full|domain):" | awk -F ':' '{printf "  - %s\n", $2}' >> $file.yaml
+          cat "$file" | grep -E "(DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN|SRC-IP-CID|IP-CIDR|DST-PORT|SRC-PORT)" | awk -F',' '{print " - " $1","$2}' > $file.yaml
         done
 
     - name: Move files to publish directory
