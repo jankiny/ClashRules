@@ -21,8 +21,8 @@ jobs:
       run: |
         for file in $(find . -type f -name '*.list'); do
           echo "Generate $file.yaml file"
-          echo "payload:" > "$file".yaml
-          cat "$file" | grep -E "(DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN|SRC-IP-CID|IP-CIDR|GEOIP|DST-PORT|SRC-PORT)" | awk -F',' '{print "  - " $0}' >> $file.yaml
+          echo "payload:" > $file.yaml
+          cat $file | grep -E "(DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN|SRC-IP-CID|IP-CIDR|GEOIP|DST-PORT|SRC-PORT)" | awk -F',' '{print "  - " $0}' >> $file.yaml
         done
 
     - name: Move files to publish directory
