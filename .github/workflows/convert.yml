@@ -9,6 +9,10 @@ jobs:
   convert:
     runs-on: ubuntu-latest
     steps:
+    - name: Set variables
+        run: |
+          echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          
     - name: Checkout code
       uses: actions/checkout@v2
 
