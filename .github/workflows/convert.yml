@@ -1,0 +1,38 @@
+name: Convert List Files to Provider Files
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**/*.list'
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Convert files
+      run: |
+        for file in $(find . -type f -name '*.list'); do
+          echo "Generate $file.yaml file"
+          echo "payload:" > "$file".yaml
+          cat "$file" | grep -E "^(full|domain):" | awk -F ':' '{printf "  - %s\n", $2}' >> $file.yaml
+        done
+
+    - name: Move files to publish directory
+      run: |
+        mkdir -p publish
+        cp *.yaml ./publish/
+
+    - name: Git push assets to "release" branch
+      run: |
+        cd publish || exit 1
+        git init
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -b release
+        git add .
+        git commit -m "${{ env.RELEASE_NAME }}"
+        git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+        git push -f origin release
