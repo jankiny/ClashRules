@@ -2,7 +2,7 @@
 # 创建者：jankiny
 # 客户端：{@client}
 # 创建时间：{@date}
-# 使用模版：clash-rule.ini
+# 使用模版：clash-rule-provider.yaml
 # 节点数量：{@count}
 # 参考：https://github.com/Loyalsoldier/clash-rules
 ####################################
@@ -368,13 +368,34 @@ rule-providers:
     url: >-
       https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
     path: ./ruleset/applications.yaml
+    interval: 86400  
+  American:
+    behavior: classical 
+    type: http
+    url: "https://raw.githubusercontent.com/jankiny/ClashRules/release/American.list.yaml"
     interval: 86400
+    path: ./ClashRules/American.list.yaml
+  Education:
+    behavior: classical 
+    type: http
+    url: "https://raw.githubusercontent.com/jankiny/ClashRules/release/Education.list.yaml"
+    interval: 86400
+    path: ./ClashRules/Education.list.yaml
+  Personal:
+    behavior: classical 
+    type: http
+    url: "https://raw.githubusercontent.com/jankiny/ClashRules/release/Personal.list.yaml"
+    interval: 86400
+    path: ./ClashRules/Personal.list.yaml
 rules:
   - RULE-SET,applications,🎯 全球直连
   - DOMAIN,clash.razord.top,🎯 全球直连
   - DOMAIN,yacd.haishan.me,🎯 全球直连
   - RULE-SET,private,🎯 全球直连
   - RULE-SET,reject,🛑 广告拦截
+  - RULE-SET,American,🚀 节点选择
+  - RULE-SET,Education,🎯 全球直连
+  - RULE-SET,Personal,🎯 全球直连
   - RULE-SET,icloud,🍎 苹果服务
   - RULE-SET,apple,🍎 苹果服务
   - RULE-SET,google,📢 谷歌FCM

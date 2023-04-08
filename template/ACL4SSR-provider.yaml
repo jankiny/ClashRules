@@ -2,9 +2,9 @@
 # 创建者：jankiny
 # 客户端：{@client}
 # 创建时间：{@date}
-# 使用模版：clash-rule.ini
+# 使用模版：clash-rules-provider.yaml
 # 节点数量：{@count}
-# 参考：https://github.com/Loyalsoldier/clash-rules
+# 参考：https://www.920.im/clash-rule-providers-configuration/
 ####################################
 mixed-port: 7890
 allow-lan: true
