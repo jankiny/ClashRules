@@ -14,5 +14,5 @@ rule-providers:
       interval: 86400
       path: ./ClashRules/American.list.yaml
 rules:
- - RULE-SET,LocalAreaNetwork,🚀 节点选择 
+ - RULE-SET,American,🚀 节点选择 
 ```
