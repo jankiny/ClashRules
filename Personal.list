@@ -7,6 +7,6 @@ DOMAIN-SUFFIX,jankiny.live
 DOMAIN-SUFFIX,ctan.org
 
 # 其他
-DOMAIN-SUFFIX,aliyuncs.com
-DOMAIN-SUFFIX,hicloud.com
-DOMAIN-SUFFIX,haliyy.com
+# DOMAIN-SUFFIX,aliyuncs.com
+# DOMAIN-SUFFIX,hicloud.com
+# DOMAIN-SUFFIX,haliyy.com
