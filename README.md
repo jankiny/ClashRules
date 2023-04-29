@@ -4,7 +4,7 @@
 
 ## 说明
 
-分流规则模板可以使用[@ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master)，也可以使用[@Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)，但`ACL4SSR`只能使用[GithubApi](###使用github-api)。
+分流规则模板可以使用[@ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master)，也可以使用[@Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)。在国内使用[GithubApi](###使用github-api)会出现错误，因此将[@ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers)中的内容同步到本项目并通过`jsdelivr cnd`加速，建议使用[jsdelivr cdn](###使用jsdelivr-cdn)。
 
 `convert.yml`工作流程为：
 1. 更新`.list`文件时触发
@@ -12,10 +12,15 @@
 3. 将转换结果上传到项目的[release](https://github.com/jankiny/ClashRules/tree/release)分支
 4. 通过jsDelivr加速资源
 
+`sync-acl4ssr.yml`工作流程为：
+1. 每天0点或更新master分支时触发
+2. 将[@ACL4SSR/ACL4SSR/Clash/Providers](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers)中的文件同步到本项目[acl4ssr](https://github.com/jankiny/ClashRules/tree/acl4ssr)分支
+3. 通过jsDelivr加速资源
+
 
 ## How to use
 
-完整的使用模板参考[template](https://github.com/jankiny/ClashRules/tree/master/template)目录。
+<!-- [template](https://github.com/jankiny/ClashRules/tree/master/template)中有两个版本的目标，将文件内容复制到[节点工具](https://v2rayse.com/clash-template)中。 -->
 
 在Clash的配置中通过`rule-providers`获取Clash分流的规则（可以使用[GithubApi](###使用github-api)获取，也可以使用[jsdelivr cdn](###使用jsdelivr-cdn)获取，使用jsdelivr需要过一段时间才生效），之后只需要刷新规则，即可实现分类规则热更新。
 ### 使用github api
