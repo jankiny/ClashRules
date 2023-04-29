@@ -1,0 +1,48 @@
+name: Sync ACL4SSR/Clash/Providers to jankiny/ClashRules/acl4ssr
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 00:00 运行
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**/README.md"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v2
+        with:
+          repository: ACL4SSR/ACL4SSR
+          ref: master
+          path: source-repo
+
+      - name: Checkout target repository
+        uses: actions/checkout@v2
+        with:
+          repository: jankiny/ClashRules
+          ref: acl4ssr
+          path: target-repo
+
+      - name: Sync repository
+        run: |
+          mkdir -p ./target-repo/ClashRules/acl4ssr
+          cp -r ./source-repo/Clash/Providers/* ./target-repo/ClashRules/acl4ssr/
+        working-directory: .
+
+      - name: Git push assets to "release" branch
+        run: |
+          cd ./target-repo/
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b acl4ssr
+          git add .
+          git commit -m "Sync ACL4SSR/Clash/Providers to jankiny/ClashRules/acl4ssr"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f origin acl4ssr
+
