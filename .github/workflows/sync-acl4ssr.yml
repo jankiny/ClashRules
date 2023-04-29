@@ -21,12 +21,12 @@ jobs:
           ref: master
           path: source-repo
 
-      - name: Checkout target repository
-        uses: actions/checkout@v2
-        with:
-          repository: jankiny/ClashRules
-          ref: acl4ssr
-          path: target-repo
+      # - name: Checkout target repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: jankiny/ClashRules
+      #     ref: acl4ssr
+      #     path: target-repo
 
       - name: Sync repository
         run: |
