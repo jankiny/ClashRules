@@ -31,7 +31,7 @@ jobs:
       - name: Sync repository
         run: |
           mkdir -p ./target-repo/ClashRules/acl4ssr
-          cp -r ./source-repo/Clash/Providers/* ./target-repo/ClashRules/acl4ssr/
+          cp -r ./source-repo/Clash/Providers/* ./target-repo
         working-directory: .
 
       - name: Git push assets to "release" branch
