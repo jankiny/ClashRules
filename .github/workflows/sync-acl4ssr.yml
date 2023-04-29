@@ -36,7 +36,7 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          cd ./target-repo/
+          cd ./target-repo/ || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -45,4 +45,11 @@ jobs:
           git commit -m "Sync ACL4SSR/Clash/Providers to jankiny/ClashRules/acl4ssr"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f origin acl4ssr
+      
+      - name: Purge jsdelivr CDN
+        run: |
+          cd ./target-repo/ || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+          done
 
