@@ -1,9 +1,11 @@
 # 美国本土，使用美国代理
 
-# openai
-DOMAIN-SUFFIX,openai.com
-DOMAIN-SUFFIX,openai.nooc.ink
-DOMAIN-SUFFIX,AI.com
+# OpenAI (ChatGPT)
+- DOMAIN-SUFFIX,chat.openai.com,OpenAI
+- DOMAIN-SUFFIX,auth0.openai.com,OpenAI
+- DOMAIN-SUFFIX,cdn.openai.com,OpenAI
+- DOMAIN-SUFFIX,openai.com,OpenAI
+- DOMAIN-SUFFIX,client.crisp.chat,OpenAI
 
 # grammarly
 DOMAIN-SUFFIX,grammarly.com
