@@ -11,7 +11,7 @@ DOMAIN-SUFFIX,client.crisp.chat,OpenAI
 DOMAIN-SUFFIX,grammarly.com
 
 # google bard
-DOMAIN-SUFFIX,bard.google.com,
+DOMAIN-SUFFIX,google.com,
 
 # claude
 DOMAIN-SUFFIX,anthropic.com,
