@@ -2,9 +2,13 @@
 
 # 个人域名
 DOMAIN-SUFFIX,jankiny.live
+DOMAIN-SUFFIX,jankiny.ninja
 
 # latex网站
 DOMAIN-SUFFIX,ctan.org
+
+# wandb
+DOMAIN-SUFFIX,wandb.ai
 
 # 其他
 DOMAIN-SUFFIX,aliyuncs.com
