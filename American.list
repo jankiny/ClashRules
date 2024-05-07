@@ -1,10 +1,26 @@
 # 美国本土，使用美国代理
 
+<<<<<<< HEAD
 # openai
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,openai.nooc.ink
 DOMAIN-SUFFIX,AI.com
+=======
+# OpenAI (ChatGPT)
+DOMAIN-SUFFIX,chat.openai.com,OpenAI
+DOMAIN-SUFFIX,auth0.openai.com,OpenAI
+DOMAIN-SUFFIX,cdn.openai.com,OpenAI
+DOMAIN-SUFFIX,openai.com,OpenAI
+DOMAIN-SUFFIX,client.crisp.chat,OpenAI
+>>>>>>> 7938be364124041edfe77cd3d8aa6fd33dfb93df
 
 # grammarly
 DOMAIN-SUFFIX,grammarly.com
+
+# google bard
+DOMAIN-SUFFIX,google.com,
+
+# claude
+DOMAIN-SUFFIX,anthropic.com,
+DOMAIN-SUFFIX,claude.ai,
