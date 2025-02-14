@@ -1,0 +1,4 @@
+payload:
+  - DOMAIN-SUFFIX,edu.cn
+  - IP-CIDR,2.2.2.0/24,no-resolve
+  - DOMAIN-SUFFIX,msftconnecttest.com
