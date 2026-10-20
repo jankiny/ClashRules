@@ -1,5 +1,40 @@
 # 简介
 
+## 推荐流程：mihomo 规则与节点分离
+
+新的 [公共模板](template/mihomo.yaml) 保留 Janki 自用 `NoAuto.ini` 的分类和手动选择方式。规则通过 `rule-providers` 更新；机场、自建节点各自通过 `proxy-providers` 更新。共享模板没有私人订阅地址，同事填写自己的来源即可使用。
+
+- [接入、更新与分享步骤](docs/mihomo-workflow.md)
+- [旧 x-ui 备份、重装与 3x-ui 交接](docs/vps-migration.md)
+- [重装后无机场时的离线恢复手册](docs/vps-offline-reinstall.md)
+- [VPS 节点优化、对照测试与回退](docs/vps-optimization.md)
+- [当前主备节点与独立额度](docs/native-node-quotas.md)
+- [新加坡备用节点、统一管理与过期移除](docs/singapore-backup.md)
+- [日本 Windows 备用节点、独立限额与恢复](docs/windows-backup.md)
+- [历史：整机共享月度流量保护](docs/traffic-budget.md)
+- [历史：单节点选择与原生月度额度](docs/single-node.md)
+- [本地检查与实际内核验收](docs/validation.md)
+
+完成 VPS 部署并保存私人管理信息后，可运行 `python3 scripts/open_xui_panel.py`，自动建立 SSH 隧道、显示账号密码并打开面板。默认读取 `private/new-vps-result.json`，SSH 端口为 `2022`（可用 `--ssh-port` 覆盖），支持 `--status` 查看连接、`--stop` 关闭本脚本管理的隧道。
+
+首次接入在本机生成一次私人配置；后续规则内容和节点内容分别刷新。修改分组或规则优先级时才升级主模板。个人配置启用完整 `Personal.list` 并固定直连，同事默认不启用。
+
+也可将生成结果通过 3x-ui 的固定 HTTPS 订阅发布，之后在客户端直接添加订阅链接。[发布和导入步骤](docs/mihomo-workflow.md#通过订阅导入完整配置) 保留规则与节点独立刷新，并提供原设置备份和回退。
+
+```bash
+uv sync --locked
+mkdir -m 700 -p private
+cp examples/personal-settings.yaml private/settings.yaml
+# 在本机编辑 private/settings.yaml 和 private/self-hosted.txt 后执行：
+uv run --locked python scripts/build_config.py
+```
+
+同事使用 `examples/shared-settings.yaml`。个人订阅与节点文件放在被 Git 忽略的 `private/` 中。`examples/` 的占位地址不能直接使用。Windows 代理继续供家庭服务使用时，个人设置保留 `allow_lan: true`；NAS 常驻代理在后续阶段部署。
+
+新配置直接读取 `master` 的 `.list`，不依赖下面的旧版生成和 CDN 流程。新增公共模板与脚本须发布到仓库后，远程下载入口才能使用；本地生成工具可以直接从当前工作目录运行。
+
+## 旧版 Clash Premium 配置
+
 本项目参考[@Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)，将自定义Clash分流策略转换为适用于 Clash Premium 内核的规则集（RULE-SET）。
 
 ## 说明
